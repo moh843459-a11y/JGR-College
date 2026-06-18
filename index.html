@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JGR College | جامعة غوثية رضوية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital@0;1&family=Cinzel:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0f0d; /* Midnight Black/Green */
+            --panel-dark: #121a16; /* Deep Ash Emerald */
+            --accent-gold: #dfb15b; /* Champagne Gold */
+            --accent-gold-hover: #f1cca3;
+            --text-light: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: rgba(223, 177, 91, 0.2);
+            --transition-fluid: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Geometric Background Overlay */
+        .geometry-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><path d="M30 0 L60 30 L30 60 L0 30 Z" fill="none" stroke="%23fff" stroke-width="1"/></svg>');
+        }
+
+        /* Sleek Modern Glass Navigation */
+        nav.nav-bar {
+            background-color: rgba(10, 15, 13, 0.85);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .brand-identity {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .brand-identity .title-en {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 3px;
+        }
+
+        .brand-identity .title-ar {
+            font-family: 'Amiri', serif;
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-top: -6px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition-fluid);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Immersive Premium Hero Section (Masjid-e-Nabawi Motif Focus) */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 15, 13, 0.75), rgba(10, 15, 13, 0.98)), url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-section h1 {
+            font-family: 'Amiri', serif;
+            font-size: 5.5rem;
+            color: var(--accent-gold);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.4rem;
+            font-weight: 400;
+            letter-spacing: 6px;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            animation: fadeIn 1.4s ease-out;
+        }
+
+        .hero-section p {
+            max-width: 750px;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 3.5rem;
+            font-weight: 300;
+            animation: fadeIn 1.6s ease-out;
+        }
+
+        .btn-premium {
+            display: inline-block;
+            color: var(--accent-gold);
+            padding: 1.1rem 3.5rem;
+            text-decoration: none;
+            border: 1px solid var(--accent-gold);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            background: transparent;
+            transition: var(--transition-fluid);
+        }
+
+        .btn-premium:hover {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(223, 177, 91, 0.15);
+        }
+
+        /* Structure Content Panels */
+        section {
+            padding: 10rem 12%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.6rem;
+            color: var(--text-light);
+            letter-spacing: 2px;
+        }
+
+        .section-header .line {
+            width: 60px;
+            height: 1px;
+            background-color: var(--accent-gold);
+            margin: 1.5rem auto 0;
+        }
+
+        /* Profile Architecture */
+        .grid-split {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .profile-narrative p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-align: justify;
+            font-weight: 300;
+        }
+
+        .profile-narrative strong {
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        .panel-accent {
+            background-color: var(--panel-dark);
+            padding: 3.5rem;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .panel-accent h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .panel-accent p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* Biography Section Framework */
+        .bio-section {
+            background-color: #060b09;
+        }
+
+        .biography-display {
+            background: var(--panel-dark);
+            padding: 5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .biography-display h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.4rem;
+            color: var(--text-light);
+            margin-bottom: 0.4rem;
+        }
+
+        .biography-display .title-role {
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .biography-display h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            margin: 3rem 0 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .chain-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .chain-block {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            transition: var(--transition-fluid);
+        }
+
+        .chain-block:hover {
+            border-color: var(--accent-gold);
+            color: var(--text-light);
+        }
+
+        /* Modernized Interactive Curriculum Matrix */
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .curriculum-card {
+            background: var(--panel-dark);
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: var(--transition-fluid);
+        }
+
+        .curriculum-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .curriculum-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .curriculum-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .curriculum-card .action-trigger {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Fluid Interactive Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 13, 0.92);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-window {
+            background: var(--panel-dark);
+            border: 1px solid var(--border-color);
+            width: 90%;
+            max-width: 800px;
+            padding: 4.5rem;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .modal-window {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: transparent;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: var(--accent-gold);
+        }
+
+        .modal-header-title {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        .book-row {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .book-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .book-row-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.75rem;
+        }
+
+        .book-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-light);
+            font-family: 'Cinzel', serif;
+        }
+
+        .book-author {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .book-description {
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-align: justify;
+            font-weight: 300;
+        }
+
+        /* Pedagogical Module Banner */
+        .training-strip {
+            background: linear-gradient(rgba(18, 26, 22, 0.92), rgba(18, 26, 22, 0.92)), url('https://images.unsplash.com/photo-1577985051167-0d49eec21977?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: var(--text-light);
+            text-align: center;
+            padding: 7rem 15%;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .training-strip h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .training-strip p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Theological Values Frame */
+        .theology-frame {
+            text-align: center;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .theology-statement {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: var(--text-light);
+            line-height: 1.9;
+        }
+
+        .theology-statement span {
+            color: var(--accent-gold);
+        }
+
+        /* Institutional Premium Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-muted);
+            padding: 6rem 10% 3rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-columns {
+            display: grid;
+            grid-template-columns: 1.4fr 0.6fr;
+            gap: 6rem;
+            margin-bottom: 5rem;
+        }
+
+        .footer-identity h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-credits {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Architecture */
+        @media (max-width: 1024px) {
+            .grid-split { grid-template-columns: 1fr; gap: 4rem; }
+            .chain-layout { grid-template-columns: 1fr; }
+            .footer-columns { grid-template-columns: 1fr; gap: 4rem; }
+            .hero-section h1 { font-size: 3.8rem; }
+            .hero-section h2 { font-size: 1.8rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="geometry-bg"></div>
+
+    <nav class="nav-bar">
+        <a href="#" class="brand-identity">
+            <span class="title-en">JGR College</span>
+            <span class="title-ar">جامعة غوثية رضوية</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#institution">Institution</a></li>
+            <li><a href="#directorate">Leadership</a></li>
+            <li><a href="#curriculum">Curriculum</a></li>
+            <li><a href="#creed">Creed</a></li>
+        </ul>
+    </nav>
+
+    <main class="hero-section">
+        <h1>جامعة غوثية رضوية</h1>
+        <h2>JGR College</h2>
+        <p>Preserving Traditional Classical Knowledge, Cultivating Future Academic Leaders. Based within Blackburn, United Kingdom, safeguarding traditional scholarly vectors for incoming generations.</p>
+        <a href="#institution" class="btn-premium">Examine the Academy</a>
+    </main>
+
+    <section id="institution">
+        <div class="section-header">
+            <h2>Institutional Profile</h2>
+            <div class="line"></div>
+        </div>
+        <div class="grid-split">
+            <div class="profile-narrative">
+                <p>Established structural operation in <strong>2014</strong> inside Blackburn, United Kingdom, by the prominent theologian Mufti Muhammad Nizamuddin Misbahi, JGR College (جامعة غوثية رضوية) addresses the critical need for elite traditional Islamic higher education.</p>
+                <p>Our academic program fully carries out the rigorous framework of the authentic <strong>Dars e Nizami</strong> system—the historically vetted pedagogical model utilized across prominent training centers of the Indian Subcontinent.</p>
+                <p>Through systematic academic instruction, our graduated alumni are now functioning as leading young scholars, stewarding educational branches of major madāris, and comprehensively leading communities as dedicated Imams and teachers.</p>
+            </div>
+            <div class="panel-accent">
+                <h4>Empowering Communities</h4>
+                <p>We blend classical text comprehension with essential modern leadership principles, turning out dynamic community assets tailored to guide society effectively.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="directorate" class="bio-section">
+        <div class="section-header">
+            <h2>The Directorate</h2>
+            <div class="line"></div>
+        </div>
+        <div class="biography-display">
+            <h3>Mufti Muhammad Nizamuddin Misbahi</h3>
+            <div class="title-role">Founder & Principal Headteacher</div>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; text-align: justify; color: var(--text-muted); font-weight: 300;">
+                Our Principal Headteacher is a distinguished graduate of the highly prominent Islamic University, <strong>Al Jāmiah Tul Ashrafiyyah</strong> in Mubarakpur, UP, India. Possessing a stellar academic teaching tenure running across nearly <strong>25 operational years</strong>, he stands as a recognized global authority across Fiqh (Jurisprudence), Tafsir (Exegesis), Hadith (Prophetic Traditions), and secondary rational sciences.
+            </p>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; text-align: justify; color: var(--text-muted); font-weight: 300;">
+                As a visionary structural archivist, Mufti Muhammad Nizamuddin Misbahi has contributed deeply to global Islamic scholarship by critically editing, annotating, and publishing historical legal treatises (*Tahqiq*) that were originally composed hundreds if not a thousand years ago.
+            </p>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; text-align: justify; color: var(--text-muted); font-weight: 300;">
+                A prolific speaker, he delivers complex jurisprudential data and public discourses fluently across multiple primary languages, including <strong>Urdu, Arabic, and English</strong>, bridging cultural divides across generations.
+            </p>
+            
+            <h4>Academic Lineage & Authorizations</h4>
+            <div class="chain-layout">
+                <div class="chain-block">Sharih E Bukhari, Faqih E Azam Hind Mufti Sharif ul Haq Amjadi (رحمه الله)</div>
+                <div class="chain-block">Imam Al ‘Ilm wa Fann, Jami’ al Maqul wa Manqul Mufti Khwaja Muzaffar Hussain (رحمه الله)</div>
+                <div class="chain-block">Mumtaz ul Ulama, Muhaddith e Kabeer Mufti Zia ul Mustafa ‘Azami (حفظه الله)</div>
+                <div class="chain-block">Sadr ul Ulama, Ustadh ul Ulama, Allamah Muhammad Ahmad Misbahi (خفظه الله)</div>
+                <div class="chain-block">Jami’ al Maqul wa Manqul, Ustadh ul Ulama Mufti Abdul Shakur Misbahi (رحمه الله)</div>
+                <div class="chain-block">Siraj ul Fuqaha, Muhaqqiq e Masail e Jadeedah Mufti Muhammad Nizamuddin Misbahi (حفظه الله)</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="curriculum">
+        <div class="section-header">
+            <h2>Curricular Matrix</h2>
+            <div class="line"></div>
+        </div>
+        <div class="curriculum-grid">
+            <div class="curriculum-card" onclick="launchModal('nahw')">
+                <h3>Nahw (Syntax)</h3>
+                <p>Laws governing classical Arabic sentence structure, inflection, and syntax patterns.</p>
+                <div class="action-trigger">Explore Literature <i class="fa-solid fa-arrow-right-long"></i></div>
+            </div>
+            <div class="curriculum-card" onclick="launchModal('sarf')">
+                <h3>Sarf (Etymology)</h3>
+                <p>The morphological science covering word derivations, core roots, and verb grids.</p>
+                <div class="action-trigger">Explore Literature <i class="fa-solid fa-arrow-right-long"></i></div>
+            </div>
+            <div class="curriculum-card" onclick="launchModal('fiqh')">
+                <h3>Fiqh (Jurisprudence)</h3>
+                <p>Deep operational tracking detailing legal rulings, methodologies, and ritual codes.</p>
+                <div class="action-trigger">Explore Literature <i class="fa-solid fa-arrow-right-long"></i></div>
+            </div>
+            <div class="curriculum-card" onclick="launchModal('usool-fiqh')">
+                <h3>Usool ul Fiqh</h3>
+                <p>Epistemological guidelines utilized to isolate specific laws from text sources.</p>
+                <div class="action-trigger">Explore Literature <i class="fa-solid fa-arrow-right-long"></i></div>
+            </div>
+            <div class="curriculum-card" onclick="launchModal('hadith')">
+                <h3>Hadith & Usool</h3>
+                <p>Rigorous textual readings paired with evaluation metrics verifying chain transmissions.</p>
+                <div class="action-trigger">Explore Literature <i class="fa-solid fa-arrow-right-long"></i></div>
+            </div>
+            <div class="curriculum-card" onclick="launchModal('tafsir')">
+                <h3>Tafsir (Exegesis)</h3>
+                <p>Hermeneutical principles analyzing textual contexts and semantic variables of the Holy Qur'an.</p>
+                <div class="action-trigger">Explore Literature <i class="fa-solid fa-arrow-right-long"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="curriculumModal" onclick="dismissModal()">
+        <div class="modal-window" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="dismissModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modalDataContainer"></div>
+        </div>
+    </div>
+
+    <div class="training-strip">
+        <h3>Monitored Pedagogical Practicums</h3>
+        <p>To produce effective community teachers, senior students participate in supervised teaching blocks. Every module is strictly observed by our Headteacher to refine public instruction capability before graduation.</p>
+    </div>
+
+    <section id="creed">
+        <div class="section-header">
+            <h2>Theological Alignment</h2>
+            <div class="line"></div>
+        </div>
+        <div class="theology-frame">
+            <p class="theology-statement">
+                "Our Aqidah and ethical institutional paradigms remain firmly anchored upon the standard guidelines established by <span>Ala Hazrat, the Mujaddid of the 14th Islamic Century, Imam Ahmed Raza Khan (رحمه الله)</span>, and our noble pious predecessors."
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-columns">
+            <div class="footer-identity">
+                <h3>JGR College</h3>
+                <p style="font-family: 'Amiri', serif; color: var(--accent-gold); font-size: 1.3rem; margin-top: -5px;">جامعة غوثية رضوية</p>
+                <p style="margin-top: 1.5rem; font-size: 0.9rem; font-weight: 300;"><i class="fa-solid fa-location-dot" style="color: var(--accent-gold); margin-right: 0.5rem;"></i> Blackburn, United Kingdom</p>
+            </div>
+            <div>
+                <h4 style="color: var(--text-light); font-family: 'Cinzel', serif; font-size: 1rem; margin-bottom: 1rem; letter-spacing: 1px;">Dars e Nizami Matrix</h4>
+                <p style="font-size: 0.9rem; font-weight: 300; text-align: justify; color: var(--text-muted);">Dedicated to preserving academic traditional depth and delivering practical implementation matrices tailored for community development.</p>
+            </div>
+        </div>
+        <div class="footer-credits">
+            &copy; 2026 JGR College. All Rights Reserved. Formatted to executive design standards.
+        </div>
+    </footer>
+
+    <script>
+        const academicDatabase = {
+            nahw: {
+                title: "Nahw (Syntax) Literature",
+                books: [
+                    { title: "Nahw Mir", author: "Allamah Imdad Hussain Pirzada", desc: "An essential standard textbook covering the systematic foundational laws of Arabic grammar and sentence formation." },
+                    { title: "Imdad ul Nahw", author: "Allamah Imdad Hussain Pirzada", desc: "A highly acclaimed modern manual providing structurally explicit breakdowns of Arabic syntactic operations." },
+                    { title: "Sharh Miati Amil", author: "Imam Abd al-Qahir al-Jurjani", desc: "A classical masterwork detailing the 100 grammatical governors that manage semantic transitions in text prose." },
+                    { title: "Hidayatun Nahw", author: "Classical Compilation Matrix", desc: "An intermediate study cataloging precise definitions, functional divisions, and syntax variations." }
+                ]
+            },
+            sarf: {
+                title: "Sarf (Etymology) Literature",
+                books: [
+                    { title: "Imdad ul Sarf", author: "Allamah Imdad Hussain Pirzada", desc: "A premier textbook providing an explicit structural analysis of sound modifications and verb paradigm derivations." },
+                    { title: "Afiyah", author: "Malik ul Ulama Allamah Zafruddīn Bihari", desc: "An advanced, highly complex morphological text explaining structural verb formations and linguistic rules." }
+                ]
+            },
+            fiqh: {
+                title: "Fiqh (Jurisprudence)",
+                books: [
+                    { title: "Nur ul Idah", author: "Imam Hasan al-Shurunbulali", desc: "The definitive early work strictly covering rules regarding purification, prayer codes, and mandatory fasting structures." },
+                    { title: "Mukhtasar al Quduri", author: "Imam Abu al-Husayn al-Quduri", desc: "A legendary Hanafi text clarifying specific operational definitions across standard legal transactions." },
+                    { title: "Sharh ul Wiqayah", author: "Sadr ul Shariah Ubaydullah Bin Mas'ūd", desc: "An advanced academic study pairing structural text commentary with rigorous legal case analyses." },
+                    { title: "Al-Hidayah", author: "Imam Burhan al-Din al-Marghinani", desc: "The authoritative masterpiece detailing relative textual arguments across comparative Hanafi schools of law." }
+                ]
+            },
+            'usool-fiqh': {
+                title: "Usool ul Fiqh (Principles of Jurisprudence)",
+                books: [
+                    { title: "Mabadi ul Usool", author: "Classical Standard Compilation", desc: "An foundational text unpacking primary legal theory terminologies and analytical tools." },
+                    { title: "Usool Al Shashi", author: "Shams ul Ulama Allamah Shamsuddin Jaunpuri", desc: "A core jurisprudential manual detailing systemic parameters of law extraction from primary textual assets." }
+                ]
+            },
+            hadith: {
+                title: "Hadith & Usool Literature",
+                books: [
+                    { title: "Mukhtasar Riyadh ul Saliheen", author: "Imam al-Nawawi (Abridged)", desc: "A selective assembly focusing directly on ethical perfection, interpersonal duties, and structural soul discipline." },
+                    { title: "Mishkat al-Masabih", author: "Imam Wali-ud-Din Al-Tabrizi", desc: "A comprehensive intermediate catalog bridging operational law matrices with internal character building." },
+                    { title: "Muwatta Imam Muhammad", author: "Imam Muhammad al-Shaybani", desc: "An early tradition ledger analyzing authentic actions while explaining Hanafi legal rationale." },
+                    { title: "Sahih Al Bukhari", author: "Imam Muhammad bin Ismail al-Bukhari", desc: "The definitive authority on authentic prophetic narrations, investigated closely for legal intent." },
+                    { title: "Principles of Hadith (Usool)", author: "Classical Standard Matrix", desc: "The rigorous methodology covering narrator evaluation, transmission tracking, and chain verification." }
+                ]
+            },
+            tafsir: {
+                title: "Tafsir (Exegesis) ",
+                books: [
+                    { title: "Tafsir ul Jalalayn", author: "Jalaluddin al-Mahalli & Jalaluddin al-Suyuti", desc: "A masterfully dense commentary giving instant access to underlying literal and legal meanings of the Holy Qur'an." }
+                ]
+            }
+        };
+
+        function launchModal(key) {
+            const currentData = academicDatabase[key];
+            if (!currentData) return;
+
+            let structuralContent = `<h3 class="modal-header-title">${currentData.title}</h3>`;
+            currentData.books.forEach(book => {
+                structuralContent += `
+                    <div class="book-row">
+                        <div class="book-row-meta">
+                            <span class="book-title">${book.title}</span>
+                            <span class="book-author">${book.author}</span>
+                        </div>
+                        <p class="book-description">${book.desc}</p>
+                    </div>
+                `;
+            });
+
+            document.getElementById('modalDataContainer').innerHTML = structuralContent;
+            document.getElementById('curriculumModal').classList.add('active');
+        }
+
+        function dismissModal() {
+            document.getElementById('curriculumModal').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
