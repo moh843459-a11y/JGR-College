@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JGR College | جامعة غوثية رضوية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #02040a; 
+            overflow-x: hidden;
+        }
+        .arabic-text {
+            font-family: 'Amiri', serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #050b18;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1e40af;
+            border-radius: 4px;
+        }
+        
+        /* --- HIGH PERFORMANCE SCROLL & INTERACTION ANIMATIONS --- */
+        /* Scroll reveal class defaults */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+        /* Activated visible state triggered by JS */
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes scaleUp {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .fade-in-active {
+            animation: scaleUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hover-lift {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -15px rgba(30, 64, 175, 0.25);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        /* --- LOGO GEOMETRY --- */
+        .integrated-logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-shield {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .logo-shield-top {
+            height: 50%;
+            width: 100%;
+            position: relative;
+            background: #eab308;
+            overflow: hidden;
+        }
+        .logo-shield-top::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 110%;
+            height: 110%;
+            background: #2563eb;
+            border-bottom-right-radius: 85% 100%;
+        }
+
+        .logo-shield-mid {
+            height: 14%;
+            width: 100%;
+            background: #22c55e;
+            clip-path: polygon(0% 0%, 25% 100%, 50% 0%, 75% 100%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 10;
+        }
+
+        .logo-shield-bot {
+            height: 36%;
+            width: 100%;
+            background: #000000;
+            clip-path: polygon(0% 0%, 25% 75%, 50% 0%, 75% 75%, 100% 0%, 100% 100%, 0% 100%);
+        }
+
+        .modal-blur {
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-slate-100 min-h-screen selection:bg-blue-600 selection:text-white antialiased">
+
+    <section class="relative min-h-[95vh] flex items-center justify-center overflow-hidden border-b border-slate-900/60 px-4">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,#1e3a8a30,transparent_60%)]"></div>
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-blue-900/10 rounded-full blur-3xl opacity-70"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10 space-y-8 reveal-on-scroll">
+            <div class="flex justify-center mb-4">
+                <div class="integrated-logo-wrapper bg-slate-900/40 hover:bg-slate-900/70 px-8 py-5 rounded-2xl border border-slate-800/80 shadow-2xl hover:scale-[1.02]">
+                    <div class="logo-shield">
+                        <div class="logo-shield-top"></div>
+                        <div class="logo-shield-mid"></div>
+                        <div class="logo-shield-bot"></div>
+                    </div>
+                    <div class="text-left border-l border-slate-800/80 pl-5">
+                        <span class="text-2xl font-bold tracking-[0.2em] text-white block leading-none font-sans">JGR</span>
+                        <span class="text-lg font-medium tracking-[0.15em] text-slate-300 block mt-1.5 leading-none font-sans">COLLEGE</span>
+                        <div class="w-full h-[1px] bg-slate-700/50 my-2"></div>
+                        <span class="text-sm arabic-text text-amber-500 block leading-tight font-bold">الجامعة الغوثية الرضوية</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-950/40 border border-blue-900/40 text-blue-400 text-xs font-semibold tracking-wider uppercase">
+                <span>Blackburn, UK</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+                <span>Est. 2014</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                Cultivating the Next Generation of <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500">Leading Islamic Scholars</span>
+            </h1>
+            
+            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+                Following the traditional Dars-e-Nizami syllabus, we prepare standard-bearing Imams and teachers dedicated to serving their communities with sincerity and spiritual excellence.
+            </p>
+            
+            <div class="pt-4">
+                <p class="arabic-text text-4xl sm:text-5xl text-slate-600 tracking-wide cursor-default select-none">جامعة غوثية رضوية</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="space-y-4">
+                    <h2 class="text-3xl font-bold tracking-tight text-white border-l-4 border-blue-600 pl-4">A Legacy of Noble Service</h2>
+                    <p class="text-slate-300 leading-relaxed text-lg font-light">
+                        Founded in 2014, JGR College has firmly established itself as a beacon of traditional Islamic learning. Our alumni are now active, leading young scholars serving across various Islamic institutions and schools, beautifully fulfilling their duties to the community as reliable Imams and teachers.
+                    </p>
+                </div>
+                
+                <div class="p-6 rounded-2xl bg-slate-900/20 border border-slate-800/60 hover-lift">
+                    <h4 class="font-semibold text-blue-400 mb-2 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                        Practical Teacher Training
+                    </h4>
+                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                        To build true confidence and effectiveness for the future, our senior students participate in regular practice teaching lessons. Each of these training sessions is carefully monitored and guided directly by our beloved headteacher to perfect their teaching methods.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-slate-900/40 to-blue-950/10 p-8 rounded-3xl border border-slate-800/60 relative overflow-hidden group hover:border-slate-700 transition-all duration-500">
+                <h3 class="text-2xl font-bold mb-4 text-white">The Curriculum Standard</h3>
+                <p class="text-slate-400 mb-6 text-sm leading-relaxed font-light">
+                    Our educational path is built entirely upon the time-tested <strong>Dars-e-Nizami</strong> framework, which remains the universally accepted standard of classical Islamic instruction across the Indian Subcontinent.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-5 bg-slate-950/60 rounded-xl border border-slate-900 transition-transform duration-300 hover:scale-[1.03]">
+                        <span class="text-3xl font-bold text-blue-500 block tracking-tight">100%</span>
+                        <span class="text-xs text-slate-400 font-medium">Traditional Authentication</span>
+                    </div>
+                    <div class="p-5 bg-slate-950/60 rounded-xl border border-slate-900 transition-transform duration-300 hover:scale-[1.03]">
+                        <span class="text-3xl font-bold text-blue-500 block tracking-tight">Active</span>
+                        <span class="text-xs text-slate-400 font-medium">Community Leaders</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-950/40 border-y border-slate-900/80 reveal-on-scroll">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Our Blessed Leadership</h2>
+                <p class="text-blue-400 font-medium tracking-wide text-lg">Mufti Muhammad Nizamuddin Misbahi</p>
+                <p class="text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed font-light">
+                    An expert authority in Fiqh, Tafsir, Hadith, and ancillary sciences with nearly 25 years of profound teaching dedication. He is a prominent graduate of the historic Islamic University, <strong>Al Jāmiah Tul Ashrafiyyah</strong>, Mubarakpur, UP India.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div class="bg-slate-900/10 border border-slate-800/40 p-8 rounded-2xl space-y-6 hover:border-slate-800 hover:bg-slate-900/20 transition-all duration-300">
+                    <h3 class="text-xl font-semibold text-white border-b border-slate-800/60 pb-3">Noble Masters</h3>
+                    <p class="text-[11px] text-slate-500 uppercase tracking-widest font-semibold">Studied Under Great Guides:</p>
+                    <ul class="space-y-4 text-sm text-slate-300 font-light">
+                        <li class="transition-transform duration-200 hover:translate-x-1"><strong class="text-blue-400 font-medium">Mufti Sharif ul Haq Amjadi</strong> <span class="text-xs text-slate-500">(رحمه الله)</span><br><span class="text-xs text-slate-400">Sharih E Bukhari, Faqih E Azam Hind</span></li>
+                        <li class="transition-transform duration-200 hover:translate-x-1"><strong class="text-blue-400 font-medium">Mufti Khwaja Muzaffar Hussain</strong> <span class="text-xs text-slate-500">(رحمه الله)</span><br><span class="text-xs text-slate-400">Imam Al ‘Ilm wa Fann, Jami’ al Maqul wa Manqul</span></li>
+                        <li class="transition-transform duration-200 hover:translate-x-1"><strong class="text-blue-400 font-medium">Mufti Zia ul Mustafa ‘Azami</strong> <span class="text-xs text-slate-500">(حفظه الله)</span><br><span class="text-xs text-slate-400">Mumtaz ul Ulama, Muhaddith e Kabeer</span></li>
+                        <li class="transition-transform duration-200 hover:translate-x-1"><strong class="text-blue-400 font-medium">Allamah Muhammad Ahmad Misbahi</strong> <span class="text-xs text-slate-500">(خفظه الله)</span><br><span class="text-xs text-slate-400">Sadr ul Ulama, Ustadh ul Ulama</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-900/10 border border-slate-800/40 p-8 rounded-2xl space-y-6 hover:border-slate-800 hover:bg-slate-900/20 transition-all duration-300">
+                    <h3 class="text-xl font-semibold text-white border-b border-slate-800/60 pb-3">Ijazah & Khilafah</h3>
+                    <p class="text-[11px] text-slate-500 uppercase tracking-widest font-semibold">Authorized By Giants of the Ummah:</p>
+                    <ul class="space-y-4 text-sm text-slate-300">
+                        <li class="p-4 rounded-xl bg-slate-950/40 border border-slate-900 hover:border-slate-800 transition-all">
+                            <strong class="text-slate-200 font-medium">Mufti Akhtar Rida Khan</strong> <span class="text-xs text-slate-500">(رحمه الله)</span>
+                            <span class="block text-xs text-blue-400 mt-1 font-light">Tajushariah, Naib e Mufti Azam Hind</span>
+                        </li>
+                        <li class="p-4 rounded-xl bg-slate-950/40 border border-slate-900 hover:border-slate-800 transition-all">
+                            <strong class="text-slate-200 font-medium">Mufti Zia ul Mustafa Azami</strong> <span class="text-xs text-slate-400">(حفظه الله)</span>
+                            <span class="block text-xs text-blue-400 mt-1 font-light">Muhaddith e Kabeer, Ustadh ul Ulama</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-900/10 border border-slate-800/40 p-8 rounded-2xl space-y-6 hover:border-slate-800 hover:bg-slate-900/20 transition-all duration-300">
+                    <h3 class="text-xl font-semibold text-white border-b border-slate-800/60 pb-3">Authored Works</h3>
+                    <p class="text-[11px] text-slate-500 uppercase tracking-widest font-semibold">Books Authored by our Headteacher:</p>
+                    <div class="space-y-3">
+                        <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center justify-between transition-transform hover:translate-x-1">
+                            <span class="font-medium text-slate-300 text-sm">Misbah ul Umrah</span>
+                            <span class="text-[10px] bg-blue-950/60 text-blue-400 border border-blue-900/50 px-2 py-0.5 rounded font-mono">FIQH</span>
+                        </div>
+                        <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-900 flex items-center justify-between transition-transform hover:translate-x-1">
+                            <span class="font-medium text-slate-300 text-sm">Misbah ul Itikaf</span>
+                            <span class="text-[10px] bg-blue-950/60 text-blue-400 border border-blue-900/50 px-2 py-0.5 rounded font-mono">FIQH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+            <h2 class="text-3xl font-bold tracking-tight text-white">The Core Syllabus</h2>
+            <p class="text-slate-400 text-sm font-light">Select a department below. <span class="text-blue-400 font-normal">Click any book card</span> to view its complete details, dedicated text photo, and verified author portfolio.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-4 space-y-2.5" id="subject-tabs-container">
+                </div>
+
+            <div class="lg:col-span-8 bg-slate-950/90 border border-slate-900/60 p-8 rounded-2xl min-h-[460px] flex flex-col justify-between relative shadow-2xl overflow-hidden transition-all duration-300">
+                <div class="absolute top-0 right-0 p-8 opacity-[0.02] text-8xl font-black tracking-tighter uppercase pointer-events-none select-none transition-all duration-500" id="bg-watermark">
+                    KNOWLEDGE
+                </div>
+                <div id="syllabus-content" class="space-y-6">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="book-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 opacity-0 pointer-events-none transition-all duration-300 modal-blur">
+        <div class="bg-slate-950 border border-slate-800 max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 flex flex-col md:flex-row relative">
+            
+            <button onclick="closeBookModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-900/60 p-2 rounded-full border border-slate-800 transition-colors z-10">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div class="md:w-2/5 bg-slate-900 p-6 flex items-center justify-center border-b md:border-b-0 md:border-r border-slate-800/80">
+                <div id="modal-book-img-container" class="w-32 h-44 bg-slate-950 rounded-lg shadow-md border border-slate-800 flex flex-col items-center justify-center p-3 text-center relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-950/40 to-transparent"></div>
+                    <svg class="w-10 h-10 text-slate-700 mb-2 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    <span id="modal-book-badge" class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block z-10">TEXTBOOK</span>
+                </div>
+            </div>
+
+            <div class="md:w-3/5 p-8 flex flex-col justify-center space-y-4">
+                <div>
+                    <span class="text-xs font-bold text-blue-500 uppercase tracking-widest block mb-1">Classical Text View</span>
+                    <h3 id="modal-book-title" class="text-2xl font-bold text-white tracking-tight">Book Title</h3>
+                </div>
+                <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-900">
+                    <span class="text-[11px] text-slate-500 uppercase font-bold block tracking-wider mb-0.5">Respected Author Portfolio</span>
+                    <span id="modal-book-author" class="text-sm font-semibold text-amber-400">Author Name</span>
+                </div>
+                <div>
+                    <span class="text-[11px] text-slate-500 uppercase font-bold block tracking-wider mb-1">Religious Scope & Focus</span>
+                    <p id="modal-book-desc" class="text-sm text-slate-400 leading-relaxed font-light">Detailed description.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="py-24 bg-slate-950/30 border-t border-slate-900 reveal-on-scroll">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-2">
+                <h2 class="text-3xl font-bold tracking-tight text-white">Our Master Inspirations</h2>
+                <p class="text-slate-400 text-sm font-light">The pillars of wisdom and guides of righteousness who inspire our path of learning.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="p-6 rounded-2xl bg-slate-900/10 border border-slate-800/50 space-y-4 hover-lift">
+                    <span class="text-xs font-semibold uppercase text-blue-500 tracking-wider">The Great Imam</span>
+                    <h3 class="text-xl font-bold text-white">Imam Abu Hanifa <span class="text-xs text-slate-500">(رحمه الله)</span></h3>
+                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                        A foundational Tabi'i blessed with immense wisdom, matchless legal reasoning, and deep piety. He dedicated his life to deriving legal rules directly from the Quran and Sunnah.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-900/10 border border-slate-800/50 space-y-4 hover-lift">
+                    <span class="text-xs font-semibold uppercase text-blue-500 tracking-wider">The Sultan of Saints</span>
+                    <h3 class="text-xl font-bold text-white">Ghouth ul Azam <span class="text-xs text-slate-500">(رحمه الله)</span></h3>
+                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                        A mountain of sacred law and a living marvel of spiritual purification. His life story is filled with absolute truthfulness and beautiful guidance.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-slate-900/10 border border-slate-800/50 space-y-4 hover-lift">
+                    <span class="text-xs font-semibold uppercase text-blue-500 tracking-wider">The Great Reviver</span>
+                    <h3 class="text-xl font-bold text-white">Imam Ahmed Raza Khan <span class="text-xs text-slate-500">(رحمه الله)</span></h3>
+                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                        The distinguished Reviver of the 14th Islamic century, renowned for his profound expertise in over fifty sciences. His legendary life protected the pure beliefs of the Ahl al-Sunnah.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gradient-to-b from-slate-950 to-black text-center relative px-4 border-t border-slate-900/80 reveal-on-scroll">
+        <div class="max-w-3xl mx-auto space-y-6">
+            <div class="inline-block px-3 py-1 bg-blue-950/50 border border-blue-900/30 rounded-full text-blue-400 text-xs font-semibold uppercase tracking-wider">
+                Our Foundation
+            </div>
+            <h2 class="text-3xl font-bold text-white tracking-tight">Our Creed and Guidelines</h2>
+            <p class="text-slate-300 italic text-base sm:text-lg leading-relaxed max-w-2xl mx-auto font-light">
+                "Our religious values, creed, and spiritual rules are firmly anchored upon the clear guidelines set by Ala Hazrat, the Mujaddid of the 14th Century, Imam Ahmed Raza Khan <span class="text-xs text-slate-500 not-italic">(رحمه الله)</span>, and our sincerely pious predecessors."
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-black py-8 border-t border-slate-900/80 text-center text-xs text-slate-500 tracking-wider">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 JGR College. All Traditional Rights Reserved.</p>
+            <p class="arabic-text text-sm text-slate-400">جامعة غوثية رضوية - Blackburn, UK</p>
+        </div>
+    </footer>
+
+    <script>
+        const curriculumData = {
+            nahw: {
+                title: "Nahw (Syntax)",
+                books: [
+                    { name: "Imdad ul Nahw", author: "Allamah Imdad Hussain Pirzada", desc: "A beautifully clear text written to simplify the primary rules of sentence formation and grammar rules." },
+                    { name: "Nahw Mir", author: "Mir Sayyid Sharif al-Jurjani", desc: "A classic, reliable manual outlining the essential structural rules of standard Arabic text parsing." },
+                    { name: "Sharh Mi'ati Amil", author: "Sheikh Abd al-Qahir al-Jurjani", desc: "A detailed breakdown explaining the one hundred specific elements that govern words within a sentence." },
+                    { name: "Hidayat un Nahw", author: "Classical Scholars", desc: "An intermediate handbook providing deep clarity on complex grammatical classifications and sentence styles." }
+                ]
+            },
+            sarf: {
+                title: "Sarf (Etymology)",
+                books: [
+                    { name: "Imdad ul Sarf", author: "Allamah Imdad Hussain Pirzada", desc: "A structured study providing simple step-by-step guidance on word origins and changing word shapes." },
+                    { name: "Al-Afiyah", author: "Malik ul Ulama Allamah Zafruddin Bihari", desc: "An advanced and highly reliable text studying complex changes in letters and word meanings." }
+                ]
+            },
+            arabic_adab: {
+                title: "Arabic Adab (Literature)",
+                books: [
+                    { name: "Faiz ul Adab (Part 1)", author: "Allamah Burhanuddin Misbahi", desc: "A core literary manual studying foundational vocabulary and translation structures. In this book, students deeply learn and apply the Khairabadi Chained Sentence Analysis (Khairabadi Zanjiri Tarkeeb) method." },
+                    { name: "Faiz ul Adab (Part 2)", author: "Allamah Burhanuddin Misbahi", desc: "The second volume focusing on elegant syntax composition, classical eloquence, and intermediate Khairabadi Chained Sentence Analysis (Khairabadi Zanjiri Tarkeeb)." }
+                ]
+            },
+            arabic_conv: {
+                title: "Conversational Arabic",
+                books: [
+                    { name: "Minhaj ul Arabiyyah (Parts 1, 2 & 3)", author: "Classical Scholars", desc: "A beautifully progressive three-part series to build speech fluency, vocabulary, and daily speaking confidence." },
+                    { name: "Madinah Arabic Reader Series", author: "Dr. V. Abdur Rahim", desc: "A modern, clear learning set teaching students to speak and write correctly using classical vocabulary." }
+                ]
+            },
+            fiqh: {
+                title: "Fiqh (Jurisprudence)",
+                books: [
+                    { name: "Anwaar e Shariah", author: "Traditional Masters", desc: "An introductory manual covering immediate matters of faith and personal worship practices." },
+                    { name: "Qanun e Sharia", author: "Mufti Shamsuddin Jaunpuri", desc: "A popular handbook explaining clear answers and standard rules for daily legal duties." },
+                    { name: "Nur ul Idah", author: "Hasan Shurunbulali", desc: "A deeply blessed text focusing closely on the rules of clean purification, ritual bathing, and formal prayer." },
+                    { name: "Mukhtasar al Quduri", author: "Imam Abu al-Husayn al-Quduri", desc: "The standard core manual summarizing thousands of foundational legal judgements within the Hanafi school." },
+                    { name: "Sharh ul Wiqayah", author: "Ubayd Allah ibn Mas'ud", desc: "An intermediate masterpiece balancing detailed legal issues with core evidences." },
+                    { name: "Al-Hidayah", author: "Burhan al-Din al-Marghinani", desc: "The ultimate peak textbook of Hanafi jurisprudence combining massive texts with standard legislative logic." }
+                ]
+            },
+            usool_fiqh: {
+                title: "Usool ul Fiqh",
+                books: [
+                    { name: "Mabadi ul Usool", author: "Traditional Teachers", desc: "A basic introduction explaining how sacred legal rulings are parsed from religious texts." },
+                    { name: "Usool Al Shashi", author: "Imam Nizam al-Din al-Shashi", desc: "A standard text tracing classical rulings step-by-step back to the Quran and the Sunnah." }
+                ]
+            },
+            hadith: {
+                title: "Hadith (Prophetic Traditions)",
+                books: [
+                    { name: "Mukhtasar Riyadh ul Saliheen", author: "Imam Al-Nawawi (Abridged)", desc: "A beautiful collection of prophetic statements dealing with pure character, modesty, and righteous actions." },
+                    { name: "Mishkat al-Masabih", author: "Al-Khatib al-Tibrizi", desc: "A massive compendium combining different narrations to build real mastery over prophetic teachings." },
+                    { name: "Muwatta Imam Muhammad", author: "Imam Muhammad al-Shaybani", desc: "A primary link of Prophetic words showing the early implementation of Hanafi legal models." },
+                    { name: "Sahih Al Bukhari", author: "Imam Muhammad ibn Ismail al-Bukhari", desc: "The most authentic book of Prophetic words, taught with high care to crown the final years of study." }
+                ]
+            },
+            tafsir: {
+                title: "Tafsir (Exegesis)",
+                books: [
+                    { name: "Tafsir ul Jalalayn", author: "Jalaluddin al-Mahalli & Jalaluddin al-Suyuti", desc: "The global gold standard explaining word-by-word meanings and safe contexts of the Holy Quran." }
+                ]
+            },
+            usool_hadith: {
+                title: "Usool ul Hadith",
+                books: [
+                    { name: "Principles of Hadith Manuals", author: "Various Scholars", desc: "Classes teaching the grading of narrators, chain connections, and validation codes." }
+                ]
+            },
+            aqidah: {
+                title: "Aqidah / Kalaam",
+                books: [
+                    { name: "Kitab al Aqaid", author: "Classical Teachers", desc: "A clear overview detailing the necessary beliefs of a Muslim against innovative interpretations." },
+                    { name: "Aqidah al Tahawiyyah", author: "Imam Abu Ja'far al-Tahawi", desc: "The timeless, universal baseline creed of the mainstream Ahl al-Sunnah wal-Jama'ah." }
+                ]
+            }
+        };
+
+        const tabsContainer = document.getElementById('subject-tabs-container');
+        const contentBox = document.getElementById('syllabus-content');
+        const bgWatermark = document.getElementById('bg-watermark');
+        
+        const bookModal = document.getElementById('book-modal');
+        const modalTitle = document.getElementById('modal-book-title');
+        const modalAuthor = document.getElementById('modal-book-author');
+        const modalDesc = document.getElementById('modal-book-desc');
+        const modalBadge = document.getElementById('modal-book-badge');
+
+        function setupTabs() {
+            const keys = Object.keys(curriculumData);
+            keys.forEach((key) => {
+                const btn = document.createElement('button');
+                btn.id = `tab-${key}`;
+                btn.className = `w-full text-left px-5 py-4 rounded-xl text-sm font-medium transition-all duration-300 border flex items-center justify-between group bg-slate-900/10 border-slate-900 text-slate-400 hover:bg-slate-900/40 hover:text-slate-200`;
+                btn.innerHTML = `
+                    <span class="tracking-wide">${curriculumData[key].title}</span>
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform text-slate-600 group-hover:text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                `;
+                btn.addEventListener('click', () => displayModule(key));
+                tabsContainer.appendChild(btn);
+            });
+            if(keys.length > 0) displayModule(keys[0]);
+        }
+
+        function displayModule(selectedKey) {
+            Object.keys(curriculumData).forEach(key => {
+                const button = document.getElementById(`tab-${key}`);
+                if (button) {
+                    button.className = `w-full text-left px-5 py-4 rounded-xl text-sm font-medium transition-all duration-300 border flex items-center justify-between group bg-slate-900/10 border-slate-900 text-slate-400 hover:bg-slate-900/40 hover:text-slate-200`;
+                }
+            });
+
+            const activeBtn = document.getElementById(`tab-${selectedKey}`);
+            if (activeBtn) {
+                activeBtn.className = `w-full text-left px-5 py-4 rounded-xl text-sm font-medium transition-all duration-300 border flex items-center justify-between group bg-blue-950/40 border-blue-900/40 text-white shadow-lg shadow-blue-950/40`;
+            }
+
+            const activeData = curriculumData[selectedKey];
+            bgWatermark.innerText = activeData.title.split(' ')[0];
+
+            contentBox.classList.remove('fade-in-active');
+            void contentBox.offsetWidth; 
+            
+            let layoutHTML = `
+                <div class="space-y-1">
+                    <span class="text-[10px] font-bold text-blue-500 uppercase tracking-widest block">Department Modules</span>
+                    <h3 class="text-2xl font-bold text-white tracking-tight">${activeData.title}</h3>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[380px] overflow-y-auto pr-2 custom-scrollbar">
+            `;
+
+            activeData.books.forEach((book) => {
+                const safeName = encodeURIComponent(book.name);
+                const safeAuthor = encodeURIComponent(book.author);
+                const safeDesc = encodeURIComponent(book.desc);
+                const safeTag = encodeURIComponent(activeData.title.split(' ')[0]);
+
+                layoutHTML += `
+                    <div onclick="openBookModal('${safeName}', '${safeAuthor}', '${safeDesc}', '${safeTag}')" 
+                         class="p-4 rounded-xl bg-slate-900/20 border border-slate-900 hover:border-slate-800 hover:bg-slate-900/40 transition-all duration-300 cursor-pointer group flex flex-col justify-between space-y-3">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-1.5">
+                                <h4 class="font-semibold text-slate-200 group-hover:text-blue-400 text-sm tracking-wide transition-colors">${book.name}</h4>
+                                <svg class="w-3.5 h-3.5 text-slate-700 group-hover:text-blue-400 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            </div>
+                            <p class="text-[11px] text-slate-500 font-medium truncate">Author: ${book.author}</p>
+                        </div>
+                        <span class="text-[9px] text-blue-500/80 font-mono tracking-widest uppercase block font-bold">Inspect Details &rarr;</span>
+                    </div>
+                `;
+            });
+
+            layoutHTML += `</div>`;
+            contentBox.innerHTML = layoutHTML;
+            contentBox.classList.add('fade-in-active');
+        }
+
+        function openBookModal(name, author, desc, tag) {
+            modalTitle.innerText = decodeURIComponent(name);
+            modalAuthor.innerText = decodeURIComponent(author);
+            modalDesc.innerText = decodeURIComponent(desc);
+            modalBadge.innerText = decodeURIComponent(tag);
+
+            bookModal.classList.remove('opacity-0', 'pointer-events-none');
+            bookModal.firstElementChild.classList.remove('scale-95');
+            bookModal.firstElementChild.classList.add('scale-100');
+        }
+
+        function closeBookModal() {
+            bookModal.classList.add('opacity-0', 'pointer-events-none');
+            bookModal.firstElementChild.classList.remove('scale-100');
+            bookModal.firstElementChild.classList.add('scale-95');
+        }
+
+        bookModal.addEventListener('click', function(e) {
+            if (e.target === bookModal) closeBookModal();
+        });
+
+        // --- HIGH PERFORMANCE INTERSECTION OBSERVER FOR SCROLL TRANSITIONS ---
+        function initScrollObserver() {
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Stop observing once visible to maintain performance
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setupTabs();
+            initScrollObserver();
+        });
+    </script>
+</body>
+</html>
